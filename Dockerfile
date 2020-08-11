@@ -2,7 +2,7 @@ FROM alpine:3.12.0
 
 LABEL maintainer="Gytis Tamulynas <Gytis@MPOServices.com>" \
     description="Kubernetes, helm, gpg, sstp, docker" \
-    version="1.1.0"
+    version="1.1.1"
 
 # https://github.com/kubernetes/kubernetes/releases
 ENV KUBECTL_VERSION="v1.18.6"
@@ -30,7 +30,7 @@ RUN apk add \
     libressl \
     zlib \
     ppp-pppoe \
-    docker \
+    docker-cli \
     && wget -q https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl \
     && wget -q ${HELM_BASE_URL}/helm-${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm \

@@ -1,14 +1,16 @@
 FROM alpine:3.12.0
 
 LABEL maintainer="Gytis Tamulynas <Gytis@MPOServices.com>" \
-    description="Kubernetes, helm, gpg, sstp" \
-    version="1.0.0"
+    description="Kubernetes, helm, gpg, sstp, docker" \
+    version="1.1.0"
 
 # https://github.com/kubernetes/kubernetes/releases
 ENV KUBECTL_VERSION="v1.18.6"
 # https://github.com/kubernetes/helm/releases
 ENV HELM_BASE_URL="https://get.helm.sh"
 ENV HELM_VERSION="v3.3.0-rc.2"
+
+COPY ./scripts/wait-for-ppp /usr/local/bin
 
 RUN apk add \
     --no-cache \

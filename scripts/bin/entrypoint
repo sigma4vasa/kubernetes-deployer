@@ -1,0 +1,15 @@
+#!/bin/bash
+# Create symlinks
+/usr/local/scripts/create-symlinks.sh
+
+# Create certificates
+if [ ! -z "$DOCKER_REGISTRY_CERT" ]; then
+    /usr/local/scripts/create-certificates.sh
+fi
+
+rc-status
+
+# Start docker service
+rc-service docker start
+
+bash

@@ -11,12 +11,6 @@ locally at /usr/local/bin/kubectl
 of ppp package.  
 * ppp-pppoe - installed through package manager from the official repository.
 Contains ppp package required to run sstp-client.  
-* docker-cli - installed through package manager from the official repository.  
+* docker - installed through package manager from the official repository.  
 ## How to connect to SSTP server?  
 Explained at [SSTP client's repository](https://github.com/sigma4vasa/sstp-client).  
-## How to access host's docker through docker-cli:  
-Docker running on the host's side can be accessed directly from this image by
-assigning docker's socket through a volume, like so:  
-```
-docker run -it -v "/var/run/docker.sock:/var/run/docker.sock:rw" hub4sigma/kubernetes-deployer:latest
-```

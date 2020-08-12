@@ -2,7 +2,7 @@ FROM alpine:3.12.0
 
 LABEL maintainer="Gytis Tamulynas <Gytis@MPOServices.com>" \
     description="Kubernetes, helm, gpg, sstp, docker" \
-    version="1.1.2"
+    version="1.2.0"
 
 # https://github.com/kubernetes/kubernetes/releases
 ENV KUBECTL_VERSION="v1.18.6"
@@ -10,7 +10,7 @@ ENV KUBECTL_VERSION="v1.18.6"
 ENV HELM_BASE_URL="https://get.helm.sh"
 ENV HELM_VERSION="v3.3.0-rc.2"
 
-COPY ./scripts/wait-for-ppp /usr/local/bin
+COPY ./scripts /usr/local/scripts/
 
 RUN apk add \
     --no-cache \
@@ -18,6 +18,7 @@ RUN apk add \
     bash \
     git \
     openssh \
+    openssl \
     curl \
     gnupg \
     gcc \
@@ -45,6 +46,7 @@ RUN apk add \
     && rm -rf sstp-client \
     && apk del gcc g++ make ppp-dev libevent-dev libressl-dev
 
+
 WORKDIR /config
 
-ENTRYPOINT ["sh","-c", "rc-status; rc-service docker start; bash"]
+ENTRYPOINT ["/usr/local/scripts/bin/entrypoint"]

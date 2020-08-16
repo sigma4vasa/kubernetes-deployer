@@ -2,7 +2,7 @@ FROM alpine:3.12.0
 
 LABEL maintainer="Gytis Tamulynas <Gytis@MPOServices.com>" \
     description="Kubernetes, helm, gpg, sstp, docker" \
-    version="1.2.0"
+    version="1.2.1"
 
 # https://github.com/kubernetes/kubernetes/releases
 ENV KUBECTL_VERSION="v1.18.6"

@@ -12,4 +12,4 @@ rc-status
 # Start docker service
 rc-service docker start
 
-bash
+exec "$@"

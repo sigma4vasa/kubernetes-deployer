@@ -9,7 +9,6 @@ fi
 
 rc-status
 
-# Start docker service
-rc-service docker start
+/usr/local/scripts/init-docker.sh
 
 exec "$@"

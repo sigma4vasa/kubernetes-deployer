@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Waiting for docker service to become available..."
+while [[ -z "$(! docker stats --no-stream 2> /dev/null)" ]]; do
+  sleep 1
+done
